@@ -12,7 +12,9 @@ final di = GetIt.instance;
 Future<void> injectDependencies() async {
   // External
   di.registerLazySingleton(() => FirebaseAuth.instance);
-  di.registerLazySingleton(() => GoogleSignIn());
+  di.registerLazySingleton(() => GoogleSignIn(
+    // serverClientId: '52400763251-vher3s21940d6tu1soupkllhcr3kucfs.apps.googleusercontent.com',
+  ));
   di.registerLazySingleton(() => Dio());
   di.registerLazySingleton(() => Connectivity());
   di.registerLazySingleton(() => LocalAuthentication());
