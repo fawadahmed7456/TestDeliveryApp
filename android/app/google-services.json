@@ -50,6 +50,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "52400763251-8tkitag1607k7tnq56fs0f6jns6bv51q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fawad.testdeliveryapp",
+            "certificate_hash": "bdbaf55564ca5f7e02b3617d605a2b5aeef53c2d"
+          }
+        },
+        {
           "client_id": "52400763251-vher3s21940d6tu1soupkllhcr3kucfs.apps.googleusercontent.com",
           "client_type": 3
         }
