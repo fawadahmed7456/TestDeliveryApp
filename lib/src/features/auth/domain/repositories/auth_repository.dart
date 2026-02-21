@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class IAuthRepository {
@@ -32,6 +33,7 @@ class AuthRepository implements IAuthRepository {
       final UserCredential userCredential = await _firebaseAuth.signInWithCredential(credential);
       return userCredential.user;
     } catch (e) {
+      debugPrint('Google sign-in failed: $e');
       rethrow;
     }
   }

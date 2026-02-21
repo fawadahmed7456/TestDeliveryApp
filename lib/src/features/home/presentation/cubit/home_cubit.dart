@@ -15,7 +15,7 @@ class HomeCubit extends Cubit<HomeState> {
       final products = [
         const Product(
           id: '1',
-          name: 'Classic Burger',
+          name: 'Big Ben Burger',
           description: 'Juicy beef patty with fresh lettuce and tomato.',
           price: 8.99,
           imageUrl: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd',
@@ -23,7 +23,7 @@ class HomeCubit extends Cubit<HomeState> {
         ),
         const Product(
           id: '2',
-          name: 'Margherita Pizza',
+          name: 'CrownCrust Pizza',
           description: 'Fresh mozzarella, basil and tomato sauce.',
           price: 12.99,
           imageUrl: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3',
@@ -39,7 +39,7 @@ class HomeCubit extends Cubit<HomeState> {
         ),
         const Product(
           id: '4',
-          name: 'Chicken Caesar Salad',
+          name: 'Chicken Chilli Salad',
           description: 'Crispy romaine lettuce, grilled chicken and dressing.',
           price: 10.99,
           imageUrl: 'https://images.unsplash.com/photo-1550304943-4f24f54ddde9',
