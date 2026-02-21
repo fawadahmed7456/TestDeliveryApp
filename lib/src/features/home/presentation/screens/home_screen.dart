@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import '../../../auth/auth.dart';
 import '../cubit/home_cubit.dart';
+
 import '../../../cart/presentation/cubit/cart_cubit.dart';
 import '../../../../shared/models/product.dart';
 import '../../../../core/core.dart';
@@ -29,9 +31,48 @@ class _HomeScreenState extends State<HomeScreen> {
             icon: const Icon(Icons.shopping_cart),
             onPressed: () => Navigator.pushNamed(context, Routes.kCart),
           ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () {
+              final authCubit = context.read<AuthCubit>();
+              showDialog(
+                context: context,
+                builder: (dialogContext) => BlocProvider.value(
+                  value: authCubit,
+                  child: AlertDialog(
+                    title: const Text('Logout'),
+                    content: const Text('Are you sure you want to logout?'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(dialogContext),
+                        child: const Text('Cancel'),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Navigator.pop(dialogContext);
+                          authCubit.signOut();
+                        },
+                        child: const Text('Logout', style: TextStyle(color: Colors.red)),
+                      ),
+                    ],
+                  ),
+                ),
+              );
+            },
+          ),
         ],
       ),
-      body: BlocBuilder<HomeCubit, HomeState>(
+      body: BlocListener<AuthCubit, AuthState>(
+        listener: (context, state) {
+          if (state is AuthUnauthenticated) {
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              Routes.kLogin,
+              (route) => false,
+            );
+          }
+        },
+        child: BlocBuilder<HomeCubit, HomeState>(
         builder: (context, state) {
           if (state is HomeLoading) {
             return const Center(child: CircularProgressIndicator());
@@ -76,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
           return const SizedBox();
         },
       ),
-    );
+    ));
   }
 }
 

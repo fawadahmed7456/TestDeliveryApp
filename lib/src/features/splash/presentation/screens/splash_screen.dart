@@ -16,10 +16,19 @@ class _SplashScreenState extends State<SplashScreen> {
   }
 
   Future<void> _navigateToNext() async {
+    // Initial check for auth status
+    di<AuthCubit>().checkAuthStatus();
+    
     // Simulate some loading
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 2));
+    
     if (mounted) {
-      Navigator.pushReplacementNamed(context, Routes.kLogin);
+      final authState = di<AuthCubit>().state;
+      if (authState is AuthAuthenticated) {
+        Navigator.pushReplacementNamed(context, Routes.kHome);
+      } else {
+        Navigator.pushReplacementNamed(context, Routes.kLogin);
+      }
     }
   }
 

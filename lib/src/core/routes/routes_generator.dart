@@ -26,6 +26,7 @@ class RoutesGenerator {
             providers: [
               BlocProvider(create: (context) => di<HomeCubit>()),
               BlocProvider.value(value: di<CartCubit>()),
+              BlocProvider.value(value: di<AuthCubit>()),
             ],
             child: const HomeScreen(),
           ),
