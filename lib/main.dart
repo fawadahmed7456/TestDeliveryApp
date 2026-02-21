@@ -23,7 +23,7 @@ void main() async {
   // Custom HTTP overrides for development
   HttpOverrides.global = MyHttpOverrides();
 
-  runApp(const EmpowerHub());
+  runApp(const DeliveryApp());
 }
 
 class MyHttpOverrides extends HttpOverrides {
